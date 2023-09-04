@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="catalog-ADM.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://font.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Leckerli+One&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+
+<body>
+
+    <!---Logo e Navbar--->
+    <header>
+        <a href="#" class="logo.img">
+            <img src="img/logo.png">
+        </a>
+
+        <ul class="navbar">
+            <li><a href="/Home/Home.html">Home-sair</a></li>
+            <li><a href="/Home/Home.html">Sobre nós-sair</a></li>
+            <li><a href="/Catalogo/catalog.html">QUERO ADOTAR-sair</a></li>
+            <li><a href="/Doar/Doar.html">Ajude a ONG-sair</a></li>
+        </ul>
+    </header>
+
+
+
+    <!---Home--->
+    <section class="home">
+        <div class="home-text">
+            <h1>Veja nossos queridos animais</h1>
+            <p>Ja imaginou conhecer varios animaiszinhos diretamente do sofá de casa? A DOTPET pode te ajudar!</p>
+            <a class="button-venhaver" href="#">Venha ver!</a>
+        </div>
+    </section>
+
+
+
+
+
+    <script src="script.js"></script>
+
+    </div>
+
+
+
+
+
+    <!---teste-->
+    <div class="titulo">
+        <h1>Meu Catálogo de Animais</h1>
+    </div>
+
+    <!-- Formulário para adicionar um novo animal -->
+
+    <div class="dados-animal">
+        <form id="animal-form">
+            <label for="nome">Nome do Animal:</label>
+            <input type="text" id="nome" name="nome" required>
+
+
+            <label for="tipo">Tipo de Animal:</label>
+            <select id="tipo" name="tipo">
+                <option value="gato">Gato</option>
+                <option value="cao">Cão</option>
+            </select>
+
+            <label for="porte">Porte:</label>
+            <select id="porte" name="porte">
+                <option value="porte pequeno">Pequeno</option>
+                <option value="porte medio">Médio</option>
+                <option value="porte grande">Grande</option>
+            </select>
+
+
+            <label for="imagem">Imagem do Animal:</label>
+            <input type="file" id="imagem" name="imagem" accept="image/*" required>
+
+
+
+
+            <div class="but-animal">
+
+                <button type="button" id="adicionar-animal">Adicionar Novo Animal</button>
+
+            </div>
+
+        </form>
+
+        <!-- Div para exibir os cards de animais -->
+        <div class="animais">
+
+            <div id="animal-containers"></div>
+
+        </div>
+    </div>
+
+
+
+    <script>
+        // Função para adicionar um novo container de animal
+        function adicionarContainerAnimal(nome, tipo, porte, imagemUrl) {
+            const animalContainers = document.getElementById('animal-containers');
+
+            // Crie um novo elemento div para o container de animal
+            const containerAnimal = document.createElement('div');
+            containerAnimal.classList.add('animal-container');
+
+            // Crie um elemento para a imagem do animal
+            const imagemAnimal = document.createElement('img');
+            imagemAnimal.src = imagemUrl;
+            imagemAnimal.alt = nome;
+
+
+
+            // Crie um botão Ativar/Desativar
+            const botaoAtivarDesativar = document.createElement('button');
+            botaoAtivarDesativar.textContent = 'Ativo';
+            botaoAtivarDesativar.classList.add('btn-ativar-desativar');
+
+
+
+            // Crie um botão Excluir Animal
+            const botaoExcluirAnimal = document.createElement('excluir');
+            botaoExcluirAnimal.textContent = 'Excluir Animal';
+            botaoExcluirAnimal.classList.add('btn-excluir-animal');
+
+            // Adicione um evento de clique para excluir o animal
+            botaoExcluirAnimal.addEventListener('click', () => {
+                removerAnimal(containerAnimal);
+            });
+
+
+            // Crie elementos para o nome, tipo e porte do animal
+            const nomeAnimal = document.createElement('h2');
+            nomeAnimal.textContent = `${nome}`;
+
+            const tipoAnimal = document.createElement('p');
+            tipoAnimal.textContent = `${tipo} ${porte}`;
+
+            const porteAnimal = document.createElement('p');
+            porteAnimal.textContent = `${porte}`;
+
+
+
+
+
+            // Adicione a imagem, o nome, o tipo e o porte do animal, e os botões ao container
+            //TALVEZ AQUI ALTERE EM RELAÇÃO AO APP E SITE, ADICIONANDO INFORMAÇÕES AQUI MAS QUE ALGUMAS NAO APARECEM
+
+
+
+            containerAnimal.appendChild(botaoExcluirAnimal);
+            containerAnimal.appendChild(imagemAnimal);
+            containerAnimal.appendChild(nomeAnimal);
+            containerAnimal.appendChild(tipoAnimal);
+            containerAnimal.appendChild(botaoAtivarDesativar);
+            
+
+
+
+
+            // Adicione o container de animal à div de containers de animais
+            animalContainers.appendChild(containerAnimal);
+            // Ouça o clique no botão Ativar/Desativar
+            botaoAtivarDesativar.addEventListener('click', () => {
+                alternarEstadoAtivacao(botaoAtivarDesativar);
+            });
+        }
+
+        // Função para alternar o estado Ativar/Desativar
+        function alternarEstadoAtivacao(botao) {
+            if (botao.textContent === 'Ativo') {
+                botao.textContent = 'Inativo';
+                botao.classList.remove('botao-ativo'); // Remova a classe de ativo
+                botao.classList.add('botao-inativo'); // Adicione a classe de inativo
+                // Adicione a lógica para ativar o animal aqui
+            } else {
+                botao.textContent = 'Ativo';
+                botao.classList.remove('botao-inativo'); // Remova a classe de inativo
+                botao.classList.add('botao-ativo'); // Adicione a classe de ativo
+                // Adicione a lógica para desativar o animal aqui
+            }
+        }
+
+
+        function removerAnimal(containerAnimal) {
+            const animalContainers = document.getElementById('animal-containers');
+            animalContainers.removeChild(containerAnimal);
+        }
+
+        // Evento de clique no botão "Adicionar Novo Animal"
+        document.getElementById('adicionar-animal').addEventListener('click', function () {
+            const nome = document.getElementById('nome').value;
+            const tipo = document.getElementById('tipo').value;
+            const porte = document.getElementById('porte').value;
+            const imagem = document.getElementById('imagem').files[0];
+
+            if (nome && tipo && porte && imagem) {
+                // Crie uma URL para a imagem carregada
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    const imagemUrl = event.target.result;
+                    adicionarContainerAnimal(nome, tipo, porte, imagemUrl);
+                };
+                reader.readAsDataURL(imagem);
+
+                // Limpe os campos do formulário após adicionar o animal
+                document.getElementById('nome').value = '';
+                document.getElementById('tipo').value = 'gato';
+                document.getElementById('porte').value = 'pequeno';
+                document.getElementById('imagem').value = '';
+            } else {
+                alert('Preencha todos os campos do formulário.');
+            }
+        });
+
+
+    </script>
+
+
+
+
+
+
+
+    <!---CARROSSEL--->
+    <script src="catalog.js" defer></script>
+    <title>Slider</title>
+    </head>
+
+    <body>
+        <section class="sobre">
+            <div class="container-slider" id="sobre">
+
+                <button id="prev-button"><img src="img/arrow.png" alt="prev-button"></button>
+                <div class="container-images">
+                    <img src="img/slide1.jpg" alt="girl" class="slider on">
+                    <img src="img/slide2.jpg" alt="girl" class="slider">
+                    <img src="img/slide3.jpg" alt="girl" class="slider">
+                </div>
+                <button id="next-button"><img src="img/arrow.png" alt="next-button"></button>
+            </div>
+        </section>
+
+
+
+
+
+
+
+        <!---Rodapé--->
+        <section class="contact">
+            <div class="contact-box">
+                <h4>INSTITUCIONAL</h4>
+                <li><a href="#top">Sobre a DOTPET</a></li>
+                <li><a href="#">Nosso intuito</a></li>
+            </div>
+
+            <div class="contact-box">
+                <h4>NOSSAS POLÍTICAS</h4>
+                <li><a href="#">Política de privacidade</a></li>
+                <li><a href="#">Termos de contrato</a></li>
+            </div>
+
+            <div class="contact-box">
+                <h4>ATENDIMENTO DOTPET</h4>
+                <li><a href="#">Fale conosco</a></li>
+                <li><a href="#">Ouvidoria: 55+ 11xxxx-xxxx</a></li>
+                <li><a href="#">Email: dotpet@xxxx.com</a></li>
+            </div>
+
+            <div class="contact-box">
+                <h4>BAIXE NOSSO APP</h4>
+                <a href="#" class="app">
+                    <img src="img/qr.jpg">
+            </div>
+
+            <div class="contact-box">
+                <h4>DOTPET</h4>
+                <h5>Nossas redes sociais:</h5>
+                <div class="social">
+                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                    <a href="#"><i class='bx bxl-instagram-alt'></i></a>
+                    <a href="#"><i class='bx bxl-twitter'></i></a>
+                </div>
+            </div>
+
+
+        </section>
+
+
+
+
+
+
+
+
+        <!---scroll--->
+        <a href="#" class="scroll-top"><i class='bx bx-chevrons-up'></i></a>
+
+        <div class="end-text">
+            <a href="/Home/Home.html">SAIR -</a>
+
+            <a href="/Perfil-ADM/perfil-adm.html">MEU PERFIL</a>
+        </div>
+
+
+
+        <!---js link--->
+        <script src="catalog-ADM.js"></script>
+
+
+
+    </body>
+
+</html>
