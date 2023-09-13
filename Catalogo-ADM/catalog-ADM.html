@@ -65,16 +65,29 @@
     <!-- Formulário para adicionar um novo animal -->
 
     <div class="dados-animal">
-        <form id="animal-form">
-            <label for="nome">Nome do Animal:</label>
-            <input type="text" id="nome" name="nome" required>
 
+        
+        <form id="animal-form">
 
             <label for="tipo">Tipo de Animal:</label>
             <select id="tipo" name="tipo">
                 <option value="gato">Gato</option>
                 <option value="cao">Cão</option>
             </select>
+
+            
+            <label for="raca">Raça:</label>
+            <input type="text" id="raca" name="raca" required>
+
+
+
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+
+            <label for="cor">Cor:</label>
+            <input type="text" id="cor" name="cor" required>
+            
 
             <label for="porte">Porte:</label>
             <select id="porte" name="porte">
@@ -83,10 +96,40 @@
                 <option value="porte grande">Grande</option>
             </select>
 
+            <label for="deficiencia">Deficiencia:</label>
+            <input type="text" id="deficiencia" name="deficiencia" required>
+
+            
+            <label for="sexo">Sexo:</label>
+            <select id="sexo" name="sexo">
+                <option value="F">F</option>
+                <option value="M">M</option>
+            </select><br><br>
+
+            <label for="vacinas">Vacinas:</label>
+            <input type="text" id="vacinas" name="vacinas" required>
+
+            <label for="idade">Idade:</label>
+            <input type="number" id="idade" name="idade" required>
+
+            <label for="castrado">Castrado:</label>
+            <select id="sexo" name="sexo">
+                <option value="S">S</option>
+                <option value="N">N</option>
+            </select>
+
+            <label for="descricao">Descrição:</label>
+            <input type="text" id="descricao" name="descricao" required>
+
+            <label for="status_animal">Status_animal:</label>
+            <select id="status_animal" name="status_animal">
+                <option value="Ativo">Ativo</option>
+                <option value="Inativo">Inativo</option>
+            </select>
+
 
             <label for="imagem">Imagem do Animal:</label>
             <input type="file" id="imagem" name="imagem" accept="image/*" required>
-
 
 
 
@@ -240,7 +283,6 @@
     <title>Slider</title>
     </head>
 
-    <body>
         <section class="sobre">
             <div class="container-slider" id="sobre">
 
